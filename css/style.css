@@ -1,0 +1,49 @@
+body {
+    background-color: #f2f2f2; /* Tonalidade de cinza claro para o fundo do corpo */
+    font-family: Arial, sans-serif; /* Escolha uma fonte adequada */
+    color: #333; /* Tonalidade de cinza escuro para o texto principal */
+}
+
+.container {
+    max-width: 800px; /* Ajuste a largura máxima do container conforme necessário */
+    margin: 0 auto; /* Centraliza o container na página */
+    padding: 20px;
+}
+
+h2 {
+    color: #222; /* Tonalidade de cinza um pouco mais escura para os cabeçalhos */
+}
+
+form {
+    max-width: 400px; /* Largura máxima do formulário para melhor leitura em dispositivos grandes */
+    margin: 20px auto; /* Centraliza o formulário na página */
+    padding: 20px;
+    background-color: #fff; /* Fundo branco para o formulário */
+    border-radius: 8px; /* Cantos arredondados para uma aparência mais suave */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra leve para destacar o formulário do fundo */
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #444; /* Tonalidade de cinza médio para rótulos */
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #ddd; /* Borda cinza claro para os campos de entrada */
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    background-color: #333; /* Fundo preto para o botão de envio */
+    color: #fff; /* Texto branco para o botão de envio */
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #555; /* Tonalidade mais escura ao passar o mouse sobre o botão de envio */
+}
