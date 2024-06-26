@@ -9,11 +9,10 @@ $response = ["status" => "", "message" => ""];
 
 // Verifica se houve envio via método POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Obtém os dados do formulário e faz a limpeza dos dados
+    // Obtém os dados do formulário
     $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $password = $_POST["password"];
-    $mac_address = $_POST["mac_address"];
 
     // Hash da senha
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
@@ -37,12 +36,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $response["message"] = "Erro: Este e-mail já está cadastrado.";
         } else {
             // Inserir novo usuário se não estiver cadastrado
-            $sql_insert = "INSERT INTO users (name, email, password, mac_address, registration_time) VALUES (?, ?, ?, ?, NOW())";
+            $sql_insert = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
             $stmt_insert = $conn->prepare($sql_insert);
             if (!$stmt_insert) {
                 throw new Exception("Erro ao preparar a inserção: " . $conn->error);
             }
-            $stmt_insert->bind_param("ssss", $name, $email, $hashed_password, $mac_address);
+            $stmt_insert->bind_param("sss", $name, $email, $hashed_password);
             if (!$stmt_insert->execute()) {
                 throw new Exception("Erro ao executar a inserção: " . $stmt_insert->error);
             }

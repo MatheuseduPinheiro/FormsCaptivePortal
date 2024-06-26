@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($password, $row['password'])) {
             // Senha correta, inicia a sessão e redireciona para a página desejada
             $_SESSION["loggedin"] = true;
-            header("Location: https://www.margalho.pro.br/site-escarlate/");
+            header("Location: https://www.google.com/");
             exit;
         } else {
             // Senha incorreta
