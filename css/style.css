@@ -1,49 +1,89 @@
-body {
-    background-color: #f2f2f2; /* Tonalidade de cinza claro para o fundo do corpo */
-    font-family: Arial, sans-serif; /* Escolha uma fonte adequada */
-    color: #333; /* Tonalidade de cinza escuro para o texto principal */
+/* style.css */
+
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.container {
-    max-width: 800px; /* Ajuste a largura máxima do container conforme necessário */
-    margin: 0 auto; /* Centraliza o container na página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#register-container, #login-container {
+    background-color: #fff;
     padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
 }
 
 h2 {
-    color: #222; /* Tonalidade de cinza um pouco mais escura para os cabeçalhos */
+    margin-bottom: 20px;
+    color: #333;
 }
 
-form {
-    max-width: 400px; /* Largura máxima do formulário para melhor leitura em dispositivos grandes */
-    margin: 20px auto; /* Centraliza o formulário na página */
-    padding: 20px;
-    background-color: #fff; /* Fundo branco para o formulário */
-    border-radius: 8px; /* Cantos arredondados para uma aparência mais suave */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra leve para destacar o formulário do fundo */
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
 }
 
 label {
     display: block;
-    margin-bottom: 8px;
-    color: #444; /* Tonalidade de cinza médio para rótulos */
+    margin-bottom: 5px;
+    color: #333;
 }
 
-input {
+.form-control {
     width: 100%;
-    padding: 8px;
-    margin-bottom: 16px;
-    border: 1px solid #ddd; /* Borda cinza claro para os campos de entrada */
+    padding: 10px;
+    border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box;
 }
 
-input[type="submit"] {
-    background-color: #333; /* Fundo preto para o botão de envio */
-    color: #fff; /* Texto branco para o botão de envio */
+.form-control:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-input[type="submit"]:hover {
-    background-color: #555; /* Tonalidade mais escura ao passar o mouse sobre o botão de envio */
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.card-btn {
+    width: 100%;
+}
+
+/* Styles for the gateway link */
+.gateway {
+    margin-top: 20px;
+}
+
+.gateway a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.gateway a:hover {
+    color: #0056b3;
+    text-decoration: underline;
 }
