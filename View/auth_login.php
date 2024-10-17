@@ -1,9 +1,5 @@
 <?php
-require_once("../globals.php");
-require_once("../Module/conexao.php");
-
-// Definindo $c como verdadeiro se o usuário estiver logado
-$c = isset($_SESSION['user_id']);
+require_once("../globals.php"); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,49 +7,36 @@ $c = isset($_SESSION['user_id']);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VirtualTinga</title>
-    <link rel="shortcut icon" href="<?= $BASE_URL ?>../img/logo-escarlate2-121x123.png">
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.css" integrity="sha512-drnvWxqfgcU6sLzAJttJv7LKdjWn0nxWCSbEAtxJ/YYaZMyoNLovG7lPqZRdhgL1gAUfa+V7tbin8y+2llC1cw==" crossorigin="anonymous" />
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-    <!-- CSS do projeto -->
-    <link rel="stylesheet" href="<?= $BASE_URL ?>css/style.css">
-    <script src="<?= $BASE_URL ?>js/script.js"></script>
+    <link rel="stylesheet" href="<?= $BASE_URL ?>../css/style.css">
+    <link rel="shortcut icon" href="<?= $BASE_URL ?>../img/logo-escarlate2-121x123.png" type="image/x-icon">
+
+    <title>CaptivePortal</title>
 </head>
 
 <body>
-    <header>
-        <nav id="main-navbar" class="navbar navbar-expand-lg">
-            <a href="<?= $BASE_URL ?>" class="navbar-brand">
-                <img src="<?= $BASE_URL ?>../img/logo-escarlate2-121x123.png" id="logo">
-                <span id="VirtualTinga-title">VirtualTinga</span>
-            </a>
-
-            <div class="collapse navbar-collapse" id="navbar">
-                <ul class="navbar-nav">
-                    <?php if (isset($c) && $c) : ?>
-                        <li class="nav-item">
-                            <a href="<?= $BASE_URL ?>conexao.php" class="nav-link bold">
-                                <i class="fas fa-user"></i>
-                                <?= isset($_SESSION['user_name']) ? $_SESSION['user_name'] : 'Usuário' ?>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?= $BASE_URL ?>logout.php" class="nav-link">
-                                <i class="fas fa-sign-in-alt"></i>
-                                Sair
-                            </a>
-                        </li>
-                    <?php else : ?>
-                        <li class="nav-item">
-                            <a href="<?= $BASE_URL ?>auth_login.php" class="nav-link">
-                                <i class="fas fa-sign-in-alt"></i>
-                                Entrar / Cadastrar
-                            </a>
-                        </li>
-                    <?php endif; ?>
-                </ul>
+    <div class="container">
+        <div class="inner-container">
+            <div class="campo-logo">
+                <img src="<?= $BASE_URL ?>../img/logo-escarlate2-121x123.png" alt="">
             </div>
-        </nav>
-    </header>
+            <h2 class="title">Entrar</h2>
+            <form action="<?= $BASE_URL ?>../Controller/login.php" method="POST">
+                <input type="hidden" name="type" value="login">
+                <div class="form-group">
+                    <label for="email">E-mail:</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu e-mail">
+                </div>
+                <div class="form-group">
+                    <label for="password">Senha:</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Digite sua senha">
+                </div>
+                <input type="submit" class="btn card-btn" value="Entrar">
+                <div class="gatway">
+                    <a href="<?= $BASE_URL ?>auth_cadastro.php">Ainda não estou cadastrado na rede</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
