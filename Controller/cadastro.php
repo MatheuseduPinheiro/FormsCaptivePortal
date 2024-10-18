@@ -1,3 +1,4 @@
+<!-- cadastro.php -->
 <?php
 include_once("../Module/conexao.php"); 
 session_start(); // Inicia a sessão

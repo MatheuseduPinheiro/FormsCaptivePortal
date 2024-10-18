@@ -1,8 +1,12 @@
+<!-- login.php -->
 <?php
 include_once("../Module/conexao.php");
 
 session_start(); // Inicia a sessão
 $c = new Conexao();
+
+// Define limite de tentativas
+define('LOGIN_ATTEMPT_LIMIT', 3);
 
 // Verifica se o formulário foi enviado
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -16,36 +20,43 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         exit;
     }
 
-    // Limite de tentativas (exemplo)
+    // Inicializa tentativas se não existir
     if (!isset($_SESSION['login_attempts'])) {
         $_SESSION['login_attempts'] = 0;
     }
 
     // Limite de tentativas
-    if ($_SESSION['login_attempts'] >= 3) {
+    if ($_SESSION['login_attempts'] >= LOGIN_ATTEMPT_LIMIT) {
         echo "Muitas tentativas. Tente novamente mais tarde.";
         exit;
     }
 
-    // Recupera o ID do usuário
-    $id = $c->getIdByEmailAndPassword($email, $senha);
+    try {
+        // Recupera o ID do usuário
+        $id = $c->getIdByEmailAndPassword($email, $senha);
 
-    if ($id == 0) {
-        $_SESSION['login_attempts'] += 1; // Incrementa tentativas
-        header("Location: ../View/erro.php?e=1");
-        exit; // Adiciona exit após header
-    } else {
-        // Limpa tentativas em caso de sucesso
-        $_SESSION['login_attempts'] = 0;
+        if ($id == 0) {
+            $_SESSION['login_attempts'] += 1; // Incrementa tentativas
+            header("Location: ../View/erro.php?e=1");
+            exit;
+        } else {
+            // Limpa tentativas em caso de sucesso
+            $_SESSION['login_attempts'] = 0;
 
-        // Armazena o ID do usuário na sessão
-        $_SESSION['user_id'] = $id;
+            // Armazena o ID do usuário na sessão
+            $_SESSION['user_id'] = $id;
 
-        // Atualiza o último login
-        $c->updateLastLogin($id); // Atualiza o campo last_login na tabela
+            // Atualiza o último login
+            $c->updateLastLogin($id);
 
-        header("Location: ../View/home.php?id=$id&tela=home");
-        exit; // Adiciona exit após header
+            header("Location: ../View/home.php?id=$id&tela=home");
+            exit;
+        }
+    } catch (Exception $e) {
+        // Tratar exceções adequadamente
+        echo "Ocorreu um erro ao processar seu login.";
+    } finally {
+        $c->close(); // Fecha a conexão
     }
 } else {
     exit;

@@ -1,3 +1,4 @@
+<!-- conexão.php -->
 <?php
 class Conexao
 {
@@ -59,10 +60,11 @@ class Conexao
         $stmt->bind_param("i", $id);
         return $stmt->execute(); // Retorna true em caso de sucesso
     }
+
     // Função para buscar dados do usuário pelo ID
-    public function getUserById($id)
-    {
-        $sql = "SELECT name, email, last_login FROM users WHERE id = ?";
+    public function getUserDataById($id){
+        // trocar no sql para nome msm
+        $sql = "SELECT name , email, last_login FROM users WHERE id = ?";
         $stmt = $this->conexao->prepare($sql);
         if (!$stmt) {
             throw new Exception("Erro na preparação da consulta: " . $this->conexao->error);
@@ -75,7 +77,6 @@ class Conexao
         }
         return null; // Retorna null se o usuário não for encontrado
     }
-
 
     public function close()
     {
