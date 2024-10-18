@@ -20,6 +20,10 @@ if ($userData === null) {
     header("Location: ../View/auth_login.php");
     exit;
 }
+
+// Para depuração
+var_dump($userData); // Isso ajudará a ver o que está sendo retornado
+
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +33,7 @@ if ($userData === null) {
     <title>Home</title>
 </head>
 <body>
-    <h1>Bem-vindo, <?php echo htmlspecialchars($userData['name']); ?>!</h1>
+    <h1>Bem-vindo, <?php echo htmlspecialchars($userData['name_user']); ?>!</h1>
     <p>Email: <?php echo htmlspecialchars($userData['email']); ?></p>
     <p>Último login: <?php echo htmlspecialchars($userData['last_login']); ?></p>
 </body>

@@ -16,7 +16,7 @@ class Conexao
 
     public function setAllDataAndReturnId($nome, $email, $senha)
     {
-        $sql = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO users (name_user, email, password) VALUES (?, ?, ?)";
         $senha_hash = password_hash($senha, PASSWORD_BCRYPT);
         $stmt = $this->conexao->prepare($sql);
         if (!$stmt) {
@@ -64,7 +64,7 @@ class Conexao
     // Função para buscar dados do usuário pelo ID
     public function getUserDataById($id){
         // trocar no sql para nome msm
-        $sql = "SELECT name , email, last_login FROM users WHERE id = ?";
+        $sql = "SELECT name_user , email, last_login FROM users WHERE id = ?";
         $stmt = $this->conexao->prepare($sql);
         if (!$stmt) {
             throw new Exception("Erro na preparação da consulta: " . $this->conexao->error);

@@ -7,7 +7,7 @@ $c = new Conexao();
 // Verifica se o formulário foi enviado
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Recupera os dados do formulário
-    $nome = trim($_POST["nome"]);
+    $nome = trim($_POST["name_user"]);
     $email = trim($_POST["email"]);
     $senha = $_POST["senha"];
     $confirmar_senha = $_POST["confirmar_senha"];
