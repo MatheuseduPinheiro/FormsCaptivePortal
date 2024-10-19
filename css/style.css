@@ -1,5 +1,3 @@
-
-
 * {
     margin: 0;
     padding: 0;
@@ -12,12 +10,13 @@ body, html {
     font-family: Arial, sans-serif;
     background: url('../img/amazonia.jpg') no-repeat center center; /* Adicionando imagem de fundo ao body */
     background-size: cover; /* Faz a imagem cobrir toda a área */
+    margin: 0; /* Removendo qualquer margem do body */
+    overflow: hidden; /* Oculta qualquer conteúdo extra que possa causar barra de rolagem */
 }
 
 .container {
     position: relative;
-    min-height: 100vh; /* Garante altura mínima */
-    /* Removendo a propriedade de fundo para evitar conflito */
+    min-height: 100vh; /* Garante altura mínima de 100% da tela */
 }
 
 .inner-container {
@@ -97,3 +96,41 @@ label {
     text-decoration: underline; /* Sublinha ao passar o mouse */
 }
 
+/* Responsividade para tablets */
+@media (max-width: 768px) {
+    .inner-container {
+        padding: 15px;
+        width: 100%;
+        max-width: 90%;
+    }
+
+    .btn {
+        font-size: 14px;
+    }
+}
+
+/* Responsividade para celulares */
+@media (max-width: 480px) {
+    h2.title {
+        font-size: 18px;
+    }
+
+    .form-control {
+        font-size: 12px;
+    }
+
+    .btn {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .gatway a {
+        font-size: 12px;
+    }
+
+    .inner-container {
+        padding: 10px;
+        width: 100%;
+        max-width: 90%;
+    }
+}
