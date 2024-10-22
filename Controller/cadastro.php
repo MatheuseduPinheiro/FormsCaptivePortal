@@ -1,4 +1,3 @@
-<!-- cadastro.php -->
 <?php
 include_once("../Module/conexao.php"); 
 session_start(); // Inicia a sessão
@@ -21,6 +20,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Verifica se as senhas coincidem
     if ($senha !== $confirmar_senha) {
         echo "As senhas não coincidem.";
+        exit;
+    }
+
+    // Verifica se o e-mail já existe no banco de dados
+    if ($c->emailExists($email)) {
+        header("Location: ../View/erro.php?e=7");
         exit;
     }
 

@@ -70,6 +70,8 @@
                 case 6:
                     echo "Credenciais incorretas. Verifique seu email e senha.";
                     break;
+                case 7:
+                    echo "Este e-mail já está cadastrado.";
                 default:
                     echo "Ocorreu um erro desconhecido. Tente novamente.";
                     break;

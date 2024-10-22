@@ -25,11 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $_SESSION['login_attempts'] = 0;
     }
 
-    // Limite de tentativas
-    if ($_SESSION['login_attempts'] >= LOGIN_ATTEMPT_LIMIT) {
-        echo "Muitas tentativas. Tente novamente mais tarde.";
-        exit;
-    }
+    
 
     try {
         // Recupera o ID do usuário

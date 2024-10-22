@@ -19,9 +19,11 @@ class Conexao
         $sql = "INSERT INTO users (name_user, email, password) VALUES (?, ?, ?)";
         $senha_hash = password_hash($senha, PASSWORD_BCRYPT);
         $stmt = $this->conexao->prepare($sql);
+        
         if (!$stmt) {
             throw new Exception("Erro na preparação da consulta: " . $this->conexao->error);
         }
+        
         $stmt->bind_param("sss", $nome, $email, $senha_hash);
         if ($stmt->execute()) {
             return $stmt->insert_id;
@@ -62,7 +64,8 @@ class Conexao
     }
 
     // Função para buscar dados do usuário pelo ID
-    public function getUserDataById($id){
+    public function getUserDataById($id)
+    {
         // trocar no sql para nome msm
         $sql = "SELECT name_user , email, last_login FROM users WHERE id = ?";
         $stmt = $this->conexao->prepare($sql);
@@ -77,6 +80,22 @@ class Conexao
         }
         return null; // Retorna null se o usuário não for encontrado
     }
+
+    public function emailExists($email)
+    {
+        $sql = "SELECT id FROM users WHERE email = ?";
+        $stmt = $this->conexao->prepare($sql);
+        if (!$stmt) {
+            throw new Exception("Erro na preparação da consulta: " . $this->conexao->error);
+        }
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $stmt->store_result();
+
+        // Verifica se o número de linhas retornado é maior que 0 (e-mail já existe)
+        return $stmt->num_rows > 0;
+    }
+
 
     public function close()
     {
