@@ -19,7 +19,7 @@ require_once("../globals.php");
     <div class="container">
         <div class="inner-container">
             <div class="campo-logo">
-                <img src="<?= $BASE_URL ?>../img/logo-escarlate2-121x123.png" alt="">
+                <img src="<?= $BASE_URL ?>../img/logo-escarlate2-121x123.png" alt="Banner Cadastro">
             </div>
             <h2 class="title">Criar Conta</h2>
             <form action="<?= $BASE_URL ?>../Controller/cadastro.php" method="POST">
