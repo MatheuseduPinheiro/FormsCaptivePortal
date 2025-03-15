@@ -10,7 +10,13 @@ Este projeto configura um Captive Portal utilizando um Raspberry Pi como Access 
 
 Com base na imagem, o Raspberry Pi foi configurado como um Access Point (AP) utilizando OpenWrt. Ele está conectado via cabo Ethernet a um roteador ISP, que distribui IPs para os dispositivos conectados. O AP gerencia a conexão de outros dispositivos genéricos (como celulares e computadores) via Wi-Fi.
 
-![funcionamento](https://github.com/user-attachments/assets/be220e70-2fb5-4c0a-bd89-c37fa601b3a2)
+
+
+
+
+https://github.com/user-attachments/assets/12663920-f370-4069-9867-020a3d8ca7f2
+
+
 
 ## Observação
 
